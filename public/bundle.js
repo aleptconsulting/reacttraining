@@ -19812,33 +19812,42 @@
 	  displayName: "WelcomeMain",
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      city: "Ahmedabad",
-	      state: "GUJ",
-	      name: "Vishal",
-	      email: "vishal.avalani@gmail.com"
+	      city: "Ahmedabad"
+	      // state: "GUJ",
+	      // name: "Vishal",
+	      // email: "vishal.avalani@gmail.com"
 	    };
 	  },
 	  getInitialState: function getInitialState() {
 	    return {
-	      city: this.props.city,
-	      state: this.props.state,
-	      name: this.props.name,
-	      email: this.props.email
+	      city: this.props.city
+	      // state: this.props.state,
+	      // name: this.props.name,
+	      // email: this.props.email
 	    };
 	  },
-	  updateState: function updateState(updates) {
-	    this.setState(updates);
+
+	  // updateState(updates) {
+	  //   this.setState(updates);
+	  // },
+	  updateState: function updateState(city) {
+	    this.setState({
+	      city: city
+	    });
 	  },
 	  render: function render() {
 	    var city = this.state.city;
-	    var state = this.state.state;
-	    var name = this.state.name;
-	    var email = this.state.email;
+	    // const state = this.state.state;
+	    // const name = this.state.name;
+	    // const email = this.state.email;
 
 	    return React.createElement(
 	      "div",
 	      { className: "container" },
-	      React.createElement(WelcomeMessage, { city: city, state: state, name: name, email: email }),
+	      React.createElement(WelcomeMessage, {
+	        city: city
+	        // state={state} name={name} email={email}
+	      }),
 	      React.createElement(WelcomeForm, { collectData: this.updateState })
 	    );
 	  }
@@ -19870,24 +19879,6 @@
 	        null,
 	        "city: ",
 	        city
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "state: ",
-	        state
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "name: ",
-	        name
-	      ),
-	      React.createElement(
-	        "h3",
-	        null,
-	        "email: ",
-	        email
 	      )
 	    );
 	  }
@@ -19907,14 +19898,14 @@
 	  displayName: "WelcomeForm",
 	  submitcalled: function submitcalled(e) {
 	    e.preventDefault();
-	    var updates = {};
+	    // let updates = {};
 
-	    updates.name = this.refs.name.value;
-	    updates.email = this.refs.email.value;
-	    updates.city = this.refs.city.value;
-	    updates.state = this.refs.state.value;
+	    // updates.name = this.refs.name.value;
+	    // updates.email = this.refs.email.value;
+	    // updates.city = this.refs.city.value;
+	    // updates.state = this.refs.state.value;
 
-	    this.props.collectData(updates);
+	    this.props.collectData(this.refs.city.value);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -19926,39 +19917,9 @@
 	        React.createElement(
 	          "label",
 	          null,
-	          "Name:"
-	        ),
-	        React.createElement("input", { type: "text", className: "form-control", ref: "name" })
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "form-group" },
-	        React.createElement(
-	          "label",
-	          null,
-	          "Email:"
-	        ),
-	        React.createElement("input", { type: "text", className: "form-control", ref: "email" })
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "form-group" },
-	        React.createElement(
-	          "label",
-	          null,
 	          "City:"
 	        ),
 	        React.createElement("input", { type: "text", className: "form-control", ref: "city" })
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "form-group" },
-	        React.createElement(
-	          "label",
-	          null,
-	          "State:"
-	        ),
-	        React.createElement("input", { type: "text", className: "form-control", ref: "state" })
 	      ),
 	      React.createElement(
 	        "button",
